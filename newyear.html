@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨雪，2026元旦快乐！🎊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.5s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .message {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease-out;
+            animation-delay: 0.5s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .animals {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+
+
+        /* 烟花效果 */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework 1.5s ease-out infinite;
+        }
+
+        /* 飘落的心形和星星 */
+        .falling {
+            position: absolute;
+            top: -50px;
+            font-size: 2em;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes firework {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall {
+            to {
+                top: 100vh;
+                transform: translateX(var(--drift)) rotate(360deg);
+            }
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 1.3em;
+            font-style: italic;
+            animation: fadeIn 3s ease-out;
+            animation-delay: 1s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎊 元旦快乐 🎊</h1>
+        <div class="subtitle">致最特别的<strong style="font-size: 1.2em; color: #ffd700;">杨雪</strong></div>
+
+        <div class="animals">🐼 🦁 🐯 🦒 🐘 🦓</div>
+
+        <div class="message">
+            <p><strong>新的一年即将到来</strong></p>
+            <p>愿你像<strong>动物园</strong>里的小动物们一样</p>
+            <p>每天都充满<strong>活力与快乐</strong></p>
+            <p><strong>工作顺利</strong>，账目清晰</p>
+            <p><strong>生活甜蜜</strong>，笑容常在</p>
+            <p><br><strong style="color: #ffd700; font-size: 1.1em;">2026年，希望能有机会</strong></p>
+            <p><strong>陪你一起看遍动物园的四季</strong></p>
+            <p><strong>一起迎接每一个美好的日出 🌅</strong></p>
+        </div>
+
+        <div class="signature">💝 一个想陪你跨年的人</div>
+    </div>
+
+    <script>
+
+        // 创建烟花效果
+        function createFirework() {
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff', '#ff8fab'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + '%';
+            firework.style.top = Math.random() * 100 + '%';
+            firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
+            firework.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
+            document.body.appendChild(firework);
+            
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        setInterval(createFirework, 200);
+
+        // 创建飘落的装饰
+        function createFalling() {
+            const symbols = ['❤️', '⭐', '🎈', '🎁', '✨', '🌟'];
+            const falling = document.createElement('div');
+            falling.className = 'falling';
+            falling.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            falling.style.left = Math.random() * 100 + '%';
+            falling.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            falling.style.setProperty('--drift', (Math.random() - 0.5) * 100 + 'px');
+            document.body.appendChild(falling);
+            
+            setTimeout(() => falling.remove(), 6000);
+        }
+
+        setInterval(createFalling, 500);
+    </script>
+</body>
+</html>
