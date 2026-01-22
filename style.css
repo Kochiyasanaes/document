@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 音乐控制按钮 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    color: #764ba2;
+    font-weight: bold;
+}
+
+.music-control:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#musicIcon {
+    font-size: 1.3em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.music-control.playing #musicIcon {
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.section {
+    display: none;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.section.active {
+    display: flex;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 60px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    color: #764ba2;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 1.3em;
+    color: #333;
+    margin: 20px 0;
+    line-height: 1.8;
+}
+
+.question {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #764ba2;
+    margin: 15px 0;
+}
+
+/* 动画效果 */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+.fade-in.delay-1 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+.fade-in.delay-2 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+.fade-in.delay-3 { animation-delay: 0.9s; opacity: 0; animation-fill-mode: forwards; }
+.fade-in.delay-4 { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+.fade-in.delay-5 { animation-delay: 1.5s; opacity: 0; animation-fill-mode: forwards; }
+.fade-in.delay-6 { animation-delay: 1.8s; opacity: 0; animation-fill-mode: forwards; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.8s ease-out;
+}
+
+.slide-in.delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+.slide-in.delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+.slide-in.delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+.slide-in.delay-4 { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+.slide-in.delay-5 { animation-delay: 1s; opacity: 0; animation-fill-mode: forwards; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.6s ease-out;
+}
+
+.zoom-in.delay-1 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+.zoom-in.delay-2 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    font-size: 4em;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+}
+
+/* 动物卡片 */
+.animal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.animal-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 25px;
+    border-radius: 20px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.emoji {
+    font-size: 3em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.animal-card p {
+    color: white;
+    font-size: 1em;
+    margin: 0;
+}
+
+/* 按钮样式 */
+.next-btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.yes-btn, .no-btn {
+    padding: 18px 45px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.5);
+}
+
+.no-btn {
+    background: #e0e0e0;
+    color: #666;
+    position: relative;
+}
+
+.no-btn:hover {
+    background: #d0d0d0;
+}
+
+/* 进度点 */
+.progress-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.5);
+}
+
+/* 成功页面 */
+.celebration {
+    animation: celebration 1s ease-in-out;
+    color: #f5576c;
+}
+
+@keyframes celebration {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-10deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1.2); }
+    75% { transform: rotate(-10deg) scale(1.1); }
+}
+
+.fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .content {
+        padding: 40px 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1.1em;
+    }
+
+    .question {
+        font-size: 1.4em;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-dots {
+        right: 15px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .yes-btn, .no-btn {
+        width: 100%;
+    }
+}
+

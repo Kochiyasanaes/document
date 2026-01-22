@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给杨雪的一封信 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        <span id="musicIcon">🔇</span>
+        <span id="musicText">点击播放音乐</span>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- 第一屏：开场 -->
+        <section class="section active" id="section1">
+            <div class="content">
+                <h1 class="fade-in">嗨，杨雪 🌸</h1>
+                <p class="fade-in delay-1">今天鼓起勇气向你表白后</p>
+                <p class="fade-in delay-2">回来的路上心里一直忐忑不安</p>
+                <p class="fade-in delay-3">有些话想再对你说...</p>
+                <button class="next-btn fade-in delay-4" onclick="nextSection()">继续 →</button>
+            </div>
+        </section>
+
+        <!-- 第二屏：认识你的美好 -->
+        <section class="section" id="section2">
+            <div class="content">
+                <h2 class="slide-in">🦋 遇见你</h2>
+                <p class="slide-in delay-1">从相亲认识你开始</p>
+                <p class="slide-in delay-2">我特别喜欢看你笑的样子</p>
+                <p class="slide-in delay-3">和你聊天的时候，感觉很快乐、很随性</p>
+                <p class="slide-in delay-4">和你相处的每一刻，我都觉得很舒服</p>
+                <button class="next-btn slide-in delay-5" onclick="nextSection()">继续 →</button>
+            </div>
+        </section>
+
+        <!-- 第三屏：动物园的浪漫 -->
+        <section class="section" id="section3">
+            <div class="content">
+                <h2 class="zoom-in">🐼 如果我们在一起</h2>
+                <div class="animal-grid zoom-in delay-1">
+                    <div class="animal-card">
+                        <span class="emoji">🦁</span>
+                        <p>我会像狮子一样勇敢<br>保护你</p>
+                    </div>
+                    <div class="animal-card">
+                        <span class="emoji">🐨</span>
+                        <p>像考拉一样温柔<br>陪伴你</p>
+                    </div>
+                    <div class="animal-card">
+                        <span class="emoji">🦒</span>
+                        <p>像长颈鹿一样<br>看得更远，为我们规划未来</p>
+                    </div>
+                    <div class="animal-card">
+                        <span class="emoji">🐧</span>
+                        <p>像企鹅一样专一<br>一生只爱你一个</p>
+                    </div>
+                </div>
+                <button class="next-btn zoom-in delay-2" onclick="nextSection()">继续 →</button>
+            </div>
+        </section>
+
+        <!-- 第四屏：承诺 -->
+        <section class="section" id="section4">
+            <div class="content">
+                <h2 class="fade-in">💝 我想对你说</h2>
+                <p class="fade-in delay-1">我知道感情需要时间培养</p>
+                <p class="fade-in delay-2">我愿意用心去了解你</p>
+                <p class="fade-in delay-3">用行动去证明我的真诚</p>
+                <p class="fade-in delay-4">如果我有做得不好的地方，你生气了</p>
+                <p class="fade-in delay-5">我也会接受，会努力改进</p>
+                <button class="next-btn fade-in delay-6" onclick="nextSection()">继续 →</button>
+            </div>
+        </section>
+
+        <!-- 第五屏：最终问题 -->
+        <section class="section" id="section5">
+            <div class="content final">
+                <h2 class="heartbeat">💕</h2>
+                <p class="question fade-in">杨雪</p>
+                <p class="question fade-in delay-1">愿不愿意</p>
+                <p class="question fade-in delay-2">给我一个机会？</p>
+                <div class="buttons fade-in delay-3">
+                    <button class="yes-btn" id="yesBtn" onclick="handleYes()">好呀 💕</button>
+                    <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="handleNo()">再想想...</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成功页面 -->
+        <section class="section" id="success">
+            <div class="content">
+                <h1 class="celebration">🎉 太好了！🎉</h1>
+                <p class="fade-in delay-1">谢谢你愿意给我这个机会</p>
+                <p class="fade-in delay-2">我会用心对你好的</p>
+                <p class="fade-in delay-3">让我们一起创造属于我们的美好回忆 💕</p>
+                <div class="fireworks"></div>
+            </div>
+        </section>
+    </div>
+
+    <div class="progress-dots">
+        <span class="dot active" data-section="1"></span>
+        <span class="dot" data-section="2"></span>
+        <span class="dot" data-section="3"></span>
+        <span class="dot" data-section="4"></span>
+        <span class="dot" data-section="5"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
