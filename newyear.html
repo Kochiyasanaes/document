@@ -2,206 +2,375 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>杨雪，2026新年快乐！🎊</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .container {
-            text-align: center;
-            color: white;
-            z-index: 10;
-            padding: 20px;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease-out;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-        }
-
-        .subtitle {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            animation: fadeInUp 1.5s ease-out;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .message {
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin: 30px auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            animation: fadeIn 2s ease-out;
-            animation-delay: 0.5s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .animals {
-            font-size: 3em;
-            margin: 20px 0;
-            animation: bounce 2s infinite;
-        }
-
-
-
-        /* 烟花效果 */
-        .firework {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: firework 1.5s ease-out infinite;
-        }
-
-        /* 飘落的心形和星星 */
-        .falling {
-            position: absolute;
-            top: -50px;
-            font-size: 2em;
-            animation: fall linear infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes firework {
-            0% {
-                transform: translate(0, 0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x), var(--y));
-                opacity: 0;
-            }
-        }
-
-        @keyframes fall {
-            to {
-                top: 100vh;
-                transform: translateX(var(--drift)) rotate(360deg);
-            }
-        }
-
-        .signature {
-            margin-top: 40px;
-            font-size: 1.3em;
-            font-style: italic;
-            animation: fadeIn 3s ease-out;
-            animation-delay: 1s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="2026新年祝福 - 给杨雪的特别祝福">
+    <title>✨ 新年快乐 ✨</title>
+    
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="newyear.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎊 新年快乐 🎊</h1>
-        <div class="subtitle">致笑的最可爱的<strong style="font-size: 1.2em; color: #ffd700;">杨雪</strong></div>
-
-        <div class="animals">🐼 🦁 🐯 🦒 🐘 🦓</div>
-
-        <div class="message">
-            <p><strong>新的一年即将到来</strong></p>
-            <p>愿你像<strong>动物园</strong>里的小动物们一样</p>
-            <p>每天都充满<strong>活力与快乐</strong></p>
-            <p><strong>工作顺利</strong>，账目清晰</p>
-            <p><strong>生活甜蜜</strong>，笑容常在</p>
-            <p><br><strong style="color: #ffd700; font-size: 1.1em;">2026年，希望能有机会</strong></p>
-            <p><strong>陪你一起看遍动物园的四季</strong></p>
-            <p><strong>一起迎接每一个美好的日出 🌅</strong></p>
+    <!-- 加载页面 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>正在准备惊喜...</p>
         </div>
-
-        <div class="signature">💝 一个想看你笑的人</div>
     </div>
 
-    <script>
+    <!-- 音频控制 -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        <span class="music-icon" id="musicIcon">🎵</span>
+        <span class="music-wave">
+            <span></span><span></span><span></span>
+        </span>
+    </div>
 
-        // 创建烟花效果
-        function createFirework() {
-            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff', '#ff8fab'];
-            const firework = document.createElement('div');
-            firework.className = 'firework';
-            firework.style.left = Math.random() * 100 + '%';
-            firework.style.top = Math.random() * 100 + '%';
-            firework.style.background = colors[Math.floor(Math.random() * colors.length)];
-            firework.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
-            firework.style.setProperty('--y', (Math.random() - 0.5) * 200 + 'px');
-            document.body.appendChild(firework);
-            
-            setTimeout(() => firework.remove(), 1500);
-        }
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=chinese-new-year-15153.mp3" type="audio/mpeg">
+    </audio>
 
-        setInterval(createFirework, 200);
+    <!-- 粒子画布 -->
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
 
-        // 创建飘落的装饰
-        function createFalling() {
-            const symbols = ['❤️', '⭐', '🎈', '🎁', '✨', '🌟'];
-            const falling = document.createElement('div');
-            falling.className = 'falling';
-            falling.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-            falling.style.left = Math.random() * 100 + '%';
-            falling.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            falling.style.setProperty('--drift', (Math.random() - 0.5) * 100 + 'px');
-            document.body.appendChild(falling);
-            
-            setTimeout(() => falling.remove(), 6000);
-        }
+    <!-- 开场动画 -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-bg"></div>
+        <div class="intro-content">
+            <div class="year-display">
+                <span class="year-number" data-text="2026">2026</span>
+            </div>
+            <h1 class="glow-text">
+                <span class="char">新</span>
+                <span class="char">年</span>
+                <span class="char">快</span>
+                <span class="char">乐</span>
+            </h1>
+            <p class="recipient">
+                <span class="for">致</span>
+                <span class="name">杨雪</span>
+            </p>
+            <button class="start-btn" onclick="startExperience()">
+                <span class="btn-text">开启祝福</span>
+                <span class="btn-shine"></span>
+            </button>
+        </div>
+        <div class="scroll-hint">
+            <span>向下滚动探索</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </div>
 
-        setInterval(createFalling, 500);
-    </script>
+    <!-- 主内容 -->
+    <main class="main-content" id="mainContent">
+        <!-- 顶部装饰 -->
+        <div class="top-decoration">
+            <div class="lantern left">🏮</div>
+            <div class="lantern right">🏮</div>
+        </div>
+
+        <!-- 标题区 -->
+        <header class="hero-section">
+            <div class="hero-badge">✨ 专属祝福 ✨</div>
+            <h2 class="hero-title">愿新的一年，<br>所有的美好都如期而至</h2>
+            <p class="hero-subtitle">点击下方卡片，解锁属于你的新年祝福</p>
+        </header>
+
+        <!-- 祝福卡片 -->
+        <section class="cards-section">
+            <div class="cards-container">
+                <div class="card" onclick="openCard(1)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">🧧</span>
+                            <span class="card-label">福</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">✨</span>
+                                <h3>新年快乐</h3>
+                                <p>愿你在新的一年里<br>心想事成，万事如意</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="openCard(2)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">🎆</span>
+                            <span class="card-label">乐</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">😊</span>
+                                <h3>笑容常在</h3>
+                                <p>希望你每天都能<br>开开心心，笑口常开</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="openCard(3)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">🎁</span>
+                            <span class="card-label">安</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">💪</span>
+                                <h3>健康平安</h3>
+                                <p>愿你身体健康<br>平平安安，顺顺利利</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="openCard(4)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">⭐</span>
+                            <span class="card-label">梦</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">🌟</span>
+                                <h3>梦想成真</h3>
+                                <p>愿你所有的梦想<br>都能在新的一年实现</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="openCard(5)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">🎈</span>
+                            <span class="card-label">顺</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">🎯</span>
+                                <h3>工作顺利</h3>
+                                <p>愿你在动物园的工作<br>越来越顺心，越来越好</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="openCard(6)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                            <span class="card-icon">💝</span>
+                            <span class="card-label">诚</span>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <span class="back-icon">💕</span>
+                                <h3>真诚祝福</h3>
+                                <p>无论如何<br>都希望你能一直快乐</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 进度 -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>收集进度</span>
+                    <span class="progress-fraction"><span id="collectedCount">0</span> / 6</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-shine"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 许愿灯 -->
+        <section class="wish-section">
+            <div class="section-header">
+                <span class="section-icon">🏮</span>
+                <h3>新年许愿灯</h3>
+                <p>轻点灯盏，许下心愿</p>
+            </div>
+            <div class="lanterns-float">
+                <div class="floating-lantern" onclick="showWish(1)">
+                    <div class="lantern-body">
+                        <span class="lantern-text">福</span>
+                    </div>
+                </div>
+                <div class="floating-lantern" onclick="showWish(2)">
+                    <div class="lantern-body">
+                        <span class="lantern-text">禄</span>
+                    </div>
+                </div>
+                <div class="floating-lantern" onclick="showWish(3)">
+                    <div class="lantern-body">
+                        <span class="lantern-text">寿</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wish-display" id="wishDisplay">
+                <span class="wish-placeholder">✨ 点击上方灯笼查看祝福 ✨</span>
+            </div>
+        </section>
+
+        <!-- 真心话 -->
+        <section class="letter-section">
+            <div class="letter-envelope">
+                <div class="envelope-flap"></div>
+                <div class="letter-paper" id="letterPaper">
+                    <div class="letter-header">
+                        <span class="letter-stamp">💌</span>
+                        <span class="letter-date">2026年 新春</span>
+                    </div>
+                    <div class="letter-body">
+                        <p class="letter-intro">虽然过去了这么久，我还是会时常想起你的笑容。</p>
+                        
+                        <div class="memory-block">
+                            <p>那些画面总是不经意间浮现——</p>
+                            <p class="memory-item">🌊 第一次在濠河边，我们试着了解彼此</p>
+                            <p class="memory-item">🌳 第二次在啬园，阳光洒在你脸上的样子</p>
+                            <p class="memory-item">💭 也可能是被拒绝后狼狈逃离的那个瞬间...</p>
+                        </div>
+
+                        <div class="farewell-block">
+                            <p class="emphasis">现在，我想好好地道个别。</p>
+                            <p>谢谢你曾经出现在我的生活里，</p>
+                            <p>让我知道什么是<span class="highlight">心动的感觉</span>。</p>
+                        </div>
+
+                        <div class="blessing-block">
+                            <p class="emphasis">由衷地祝福你，</p>
+                            <p>希望你可以一直笑得那么灿烂，</p>
+                            <p>希望你能遇到<span class="highlight">真正对的那个人</span>，</p>
+                            <p>希望你的每一天都充满阳光和快乐。</p>
+                        </div>
+                    </div>
+                    <div class="letter-footer">
+                        <div class="signature-line"></div>
+                        <p class="signature">新年快乐，杨雪</p>
+                        <div class="letter-decorations">
+                            <span>🌸</span><span>✨</span><span>🌸</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 互动游戏 -->
+        <section class="games-section">
+            <div class="section-header">
+                <span class="section-icon">🎮</span>
+                <h3>互动小游戏</h3>
+                <p>放松一下，来玩几个小游戏吧</p>
+            </div>
+
+            <div class="games-grid">
+                <!-- 抓动物 -->
+                <div class="game-box">
+                    <div class="game-header">
+                        <span class="game-emoji">🦁</span>
+                        <h4>动物园大冒险</h4>
+                    </div>
+                    <p class="game-desc">点击乱跑的小动物，看你手速有多快！</p>
+                    <div class="catch-area" id="catchArea">
+                        <div class="catch-stats">
+                            <span>抓到: <strong id="catchScore">0</strong></span>
+                            <span>时间: <strong id="catchTime">30</strong>s</span>
+                        </div>
+                    </div>
+                    <button class="game-btn primary" onclick="startCatchGame()">开始游戏</button>
+                </div>
+
+                <!-- 猜数字 -->
+                <div class="game-box">
+                    <div class="game-header">
+                        <span class="game-emoji">🔮</span>
+                        <h4>心灵感应</h4>
+                    </div>
+                    <p class="game-desc">我想了一个1-10的数字，你能猜到吗？</p>
+                    <div class="guess-area">
+                        <div class="guess-input-group">
+                            <input type="number" id="guessInput" min="1" max="10" placeholder="?">
+                            <button onclick="guessNumber()">猜</button>
+                        </div>
+                        <p class="guess-hint" id="guessHint">试试看吧！</p>
+                    </div>
+                </div>
+
+                <!-- 表情包 -->
+                <div class="game-box wide">
+                    <div class="game-header">
+                        <span class="game-emoji">🎨</span>
+                        <h4>新年表情生成器</h4>
+                    </div>
+                    <div class="emoji-creator">
+                        <div class="emoji-display" id="emojiDisplay">
+                            <span class="emoji-big">🎊</span>
+                            <p class="emoji-text">点击下方按钮生成专属祝福</p>
+                        </div>
+                        <div class="emoji-actions">
+                            <button class="game-btn primary" onclick="generateEmoji()">生成</button>
+                            <button class="game-btn secondary" onclick="shareEmoji()">分享</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 烟花控制 -->
+        <section class="firework-section">
+            <div class="firework-display" id="fireworkDisplay">
+                <canvas id="fireworkCanvas"></canvas>
+            </div>
+            <button class="firework-btn" onclick="launchFireworks()">
+                <span class="btn-icon">🎆</span>
+                <span class="btn-text">放烟花</span>
+            </button>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="page-footer">
+            <div class="footer-decoration">✨ 🌸 ✨</div>
+            <p class="footer-text">愿你被这个世界温柔以待</p>
+            <button class="replay-btn" onclick="replay()">
+                <span>↻</span> 再看一遍
+            </button>
+        </footer>
+    </main>
+
+    <!-- 完成弹窗 -->
+    <div class="complete-modal" id="completeModal">
+        <div class="modal-content">
+            <div class="modal-stars">✨ ✨ ✨</div>
+            <h2>🎉 恭喜！ 🎉</h2>
+            <p>你已经收集了所有的新年祝福！</p>
+            <div class="modal-blessing">
+                <p>2026年，愿你</p>
+                <p class="big-blessing">平安喜乐，万事顺遂</p>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">继续探索</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="newyear.js"></script>
 </body>
 </html>
